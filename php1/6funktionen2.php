@@ -40,7 +40,7 @@
     $gesuchtrName = "Heidi";
     if (in_array($gesuchtrName, $eindeutig))
     {
-        echo "Gefunden";
+        echo "Namen" . $gesuchtrName . "Gefunden";
     }else {
         echo "Nicht gefunden";
     }

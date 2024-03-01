@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schleifen mit PHP</title>
+    <title>Loops mit PHP</title>
 </head>
 <body>
     <h1>Schleifen</h1>
@@ -28,9 +28,11 @@
         echo $stadt;
         echo "<br/>";
     }
+
     for ($i = 1; $i < 50; $i++){
         if ($i == 3)continue;
         if ($i >= 10)break;
+        echo $i;
     }
     ?>
 </body>

@@ -15,10 +15,10 @@ function celsius_in_fahrenheit($celsius){
     return $fahrenheit;
 }
     //todas son correctas 
-    $grad = 20;
-    echo celsius_in_fahrenheit(15);
+    //$grad = 20;
+    echo celsius_in_fahrenheit(0);
     echo "<br/>";
-    echo celsius_in_fahrenheit($grad);
+    echo celsius_in_fahrenheit(15);
     echo "<br/>";
     echo celsius_in_fahrenheit(-30);
     echo "<br/>";
@@ -35,6 +35,7 @@ function celsius_in_fahrenheit($celsius){
     }
     echo de_datum($datum_mysql);
     echo "<br/>";
+
     //beispiel 2
     function de_datum_mit_date($datum_falsch) {
         $time = strtotime($datum_falsch);
@@ -69,7 +70,7 @@ function celsius_in_fahrenheit($celsius){
     //123456789012345678 => 1234567890...
     function text_abschneiden($text_lang, $lange = 10){
         //$lange = 15;
-        if (strlen($text_lang) >= 10){
+        if (strlen($text_lang) >= $lange){
             $text_kurz = substr($text_lang, 0, $lange);
             return $text_kurz . "...";
         } else {

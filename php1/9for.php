@@ -26,6 +26,13 @@
 
     echo "</table>";
 
+    //$datum = "24.12.2022";
+    //if (preg_match (
+      //  "/^[0-9] + \ . [0-9] + \ .20[0-9] + $datum/"
+    //)); {
+      //  echo "Datum ist Korrekt";
+    //}
+
     ?>
     <br/></br>
     <table border="1">
