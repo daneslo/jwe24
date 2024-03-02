@@ -16,15 +16,15 @@ if ( $site == "home"){
 } elseif ($site == "leistungen") {
     $include_datei = "leistungen.php";
     $seitentitel = "Gunstiger Preis";
-    $description = "u";
+   
 } elseif ($site == "oeffnungszeiten") {
     $include_datei = "oeffnungszeiten.php";
     $seitentitel = "Immer für Sie da";
-    $description = "t";
+   
 } elseif ($site == "kontakt") {
     $include_datei = "kontakt.php";
     $seitentitel = "Fragen Sie uns";
-    $description = "o";
+   
 } else {
     //seite gibt es bei uns nicht (mehr) -> error ausgeben
     $include_datei = "error404.php";
