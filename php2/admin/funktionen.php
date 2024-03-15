@@ -8,3 +8,18 @@ session_start();
 $db = mysqli_connect("localhost", "root", "", "php2");
 //MySQLI mitteilen, dass unsere Befehle als utf8 kommen
 mysqli_set_charset($db, "utf8");
+
+//funktion um SQL-Injections zu vermeiden
+function escape($post_var) {
+    global $db; //keyword global um die 4DB Variable vom globalen scope zu übernehmen
+    return mysqli_real_escape_string($db, $post_var);
+}
+
+//dies funktion überprüft ob der benutzer eingeloggt ist
+//Falls nicht, dann wird er automatisch auf die Login-Seite umgeleitet
+function ist_eingeloggt() {
+    if (empty($_SESSION["eingeloggt"])) {
+        header("Location: login.php");
+        exit; //beendet das Skript, damit der teil darunter nicht mehr zum browser geschickt wird.
+    }
+}
