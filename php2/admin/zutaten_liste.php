@@ -11,17 +11,19 @@ include "kopf.php";
 <?php
 //$result = mysqli_query($db, "SELECT * FROM zutaten"),
 //Ausbau schritt mit ORDER BY
-   $result = mysqli_query($db, "SELECT * FROM zutaten ORDER BY titel ASC");
+   $result = query("SELECT * FROM zutaten ORDER BY titel ASC");
 
    //print_r($result);
 
-echo "<table border='1', background='white'>";
+echo "<table border='1'>"; 
 
    echo "<thread>";
       echo "<tr>";
           echo "<th>Titel</th>";
           echo "<th>Menge</th>";
-          echo "<th>kcal_pro_100</th>";
+          echo "<th>Einheit</th>";
+          echo "<th>Kcal_pro_100</th>";
+          echo "<th>Aktionen</th>";
       echo "</tr>";
    echo "</thread>";
    echo "<tbody>";
@@ -29,7 +31,11 @@ echo "<table border='1', background='white'>";
     echo "<tr>";
          echo "<td>" . $row["titel"] . "</td>";
          echo "<td>" . $row["Menge"] . "</td>";
+         echo "<td>" . $row["einheit"] . "</td>";
          echo "<td>" . $row["kcal_pro_100"] . "</td>";
+         echo "<td>"
+          . "<a href='zutaten_bearbeiten.php?id={$row["id"]}'>Bearbeiten</a>-"
+          . "<a href='zutaten_entfernen.php?id={$row["id"]}'>Entfernen</a>" . "</td>";
     echo "</tr>";
 
    }

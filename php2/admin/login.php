@@ -13,10 +13,11 @@ if (! empty($_POST)) {
         //diese funktion bewahrt uns vor jeglicher sqli injection
         //alle Daten aus $_Post u. $_GET (alle benutzer bzw. formulardaten)
       //$sql_benutzername =  mysqli_real_escape_string($db, $_POST["benutzername"]);
-      sql_benutzername = escape($_POST["benutzername"]);
+      $sql_benutzername = escape($_POST["benutzername"]);
 
        //Datenbak zugriff und abfrage
-       $result = mysqli_query($db, "SELECT * FROM benutzer WHERE benutzername = '$sql_benutzername'");
+       /*$result = mysqli_query($db, "SELECT * FROM benutzer WHERE benutzername = '$sql_benutzername'");*/
+         $result = query("SELECT * FROM benutzer WHERE benutzername = '$sql_benutzername'");
        
     //print_r($result);
          //Datensatz aus mysqli in ein Array umwandeln
@@ -24,30 +25,30 @@ if (! empty($_POST)) {
 
     //print_r($row);
     if ($row) {
-        //benutzer existiert ->Passwort prüfen
 
+        //benutzer existiert ->Passwort prüfen
         if (password_verify($_POST["passwort"], $row["passwort"])) {
-            //Passwort ist richtig
-            //Session starten
+            //Passwort ist richtig //Session starten
            $_SESSION["eingeloggt"] = true;
            $_SESSION["benutzername"] = $row["benutzername"];
 
            //Anzahl login in DB speichern
-           mysqli_query($db, "UPDATE benutzer SET 
+           /*mysqli_query($db, "UPDATE benutzer SET 
+                      anzahl_logins = anzahl_logins + 1,
+                      letzte_logins = NOW() 
+                      WHERE id = {$row["id"] } ");*/
+              query("UPDATE benutzer SET 
                       anzahl_logins = anzahl_logins + 1,
                       letzte_logins = NOW() 
                       WHERE id = {$row["id"] } ");
 
          
-          
-
            //umleitung in admin-system
               header("Location: index.php");
               exit;
         } else {
             //passwort war falsh
             $error = "Benutzername oder Passwort ist falsch";
-
         }
            
         } else { 
@@ -75,7 +76,7 @@ if (! empty($_POST)) {
 </head>
 <style>
     body {
-        background-color: "blue";
+        background-color: lightgreen;
     }
 </style>
 <body>
