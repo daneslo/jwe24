@@ -65,6 +65,9 @@
             <li> <a href="zutaten_liste.php">  
                 Zutaten
              </a></li>
+             <li> <a href="rezepte_liste.php">  
+                Rezepte 
+             </a></li>
             
              <li> <a  href="logout.php">Ausloggen</a> (Eingeloggt als: <?php echo $_SESSION["benutzername"]?>)</li>
             
