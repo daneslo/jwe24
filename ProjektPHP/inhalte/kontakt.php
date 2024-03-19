@@ -32,6 +32,7 @@ if (!empty($_POST))
             Name: {$_POST ["name"]}
             Email: {$_POST ["email"]}
             Nachricht: {$_POST ["message"]}
+            IP. {$_SERVER ["REMOTE_ADDR"]}
             ";
             //testweise inhalt im browser ausgeben
             //echo "<pre>"; print_r($_POST); echo "</pre>";
@@ -82,7 +83,7 @@ if (!empty($_POST))
                     //erfolgsmeldung ausgeben, wenn alles in Ordnung ist 
                     if($erfolg) {
                         echo "<h3>Vielen Dank für Ihre Anfrage!</h3>";
-                    } else {
+                    } else { //aqui empieza la condicion
                     ?>
                     <form action="" method = "post">
                         <div>
@@ -115,7 +116,7 @@ if (!empty($_POST))
                         </div>
                     </form>
                     <?php
-                    }
+                    } //schließende klammer von der Erfolgsmeldung y aqui termina
                     ?>
                 </div>
                 <div class="clear"></div>
