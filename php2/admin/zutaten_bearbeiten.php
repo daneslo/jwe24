@@ -16,7 +16,7 @@ if (!empty($_POST)) {
     if (empty($sql_titel)) {
         $errors[] = "Bitte geben Sie einen Name für die Zutat an.";
     } else {
-        //prüfen ob die Zutat schon existiert
+        //prüfen ob die Zutat schon existiert (nicht sich selbst)
         $result = query("SELECT * FROM zutaten WHERE titel = '$sql_titel' AND id != '{$sql_id}'");
 
         //Datensatz aus mysqli in ein php array umwandeln
@@ -27,6 +27,7 @@ if (!empty($_POST)) {
             $errors[] = "Die Zutat existiert bereits";
         }
     }
+    
     //wenn keine fehler existieren, dann können wir die Zutat in der DB speichern
    if(empty($errors)) {
         if($sql_kcal_pro_100 == "") {

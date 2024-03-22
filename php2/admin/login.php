@@ -31,6 +31,7 @@ if (! empty($_POST)) {
             //Passwort ist richtig //Session starten
            $_SESSION["eingeloggt"] = true;
            $_SESSION["benutzername"] = $row["benutzername"];
+           $_SESSION["benutzer_id"] = $row["id"];
 
            //Anzahl login in DB speichern
            /*mysqli_query($db, "UPDATE benutzer SET 
@@ -76,7 +77,23 @@ if (! empty($_POST)) {
 </head>
 <style>
     body {
-        background-color: lightgreen;
+        background-color: beige;
+    }
+    h1{
+        color: purple;
+        text-align: center;
+    }
+    
+    form {
+    background-color: lightblue;
+    width: 50%;
+    padding: 20px;
+    margin: 0 auto;
+    border: 5px solid grey;
+    border-radius: 5px;
+    color: purple;
+    font-size: 20px;
+    
     }
 </style>
 <body>
