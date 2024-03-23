@@ -23,7 +23,7 @@ if( !empty ($_POST)) {
         $errors[]= "Bitte geben Sie einen Name für die Rezept an.";
     } else {
         //prüfen ob die Zutat schon existiert
-        $result = query("SELECT * FROM rezepte WHERE titel = '$sql_titel'");
+        $result = query("SELECT * FROM pas WHERE titel = '$sql_titel'");
 
         //datensatz aus mysqli in ein php array umwandeln
         $row = mysqli_fetch_assoc($result);
@@ -107,7 +107,7 @@ include "kopf.php";
                        if(!empty($_POST["benutzer_id"]) && !$erfolg && $_POST["benutzer_id"] == $user["id"]) {
                            echo "selected";
                        } elseif(empty($_POST["benutzer_id"]) && !$erfolg && $user["id"] == $_SESSION["benutzer_id"]) {
-                        echo "selected";
+                        echo "selected"; //to select the user that is log in in the db
                        }
                         echo  ">{$user["benutzername"]}</option>";
                     }
@@ -136,7 +136,7 @@ include "kopf.php";
         <div class="zutatenliste">
             <?php
             $bloecke = 1;
-            for ( $i=0; $i < $bloecke; $i++ ) {
+            for ( $i=0; $i < $bloecke; $i++ ) { //beginnig der for schleife
             ?>
             <div class= "zutatenblock">
                 <div>

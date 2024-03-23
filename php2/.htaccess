@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteBase /php2/jwe24/php2/
+
+RewriteRule ^\/?api\/? api.php

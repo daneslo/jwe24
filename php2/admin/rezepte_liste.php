@@ -11,6 +11,7 @@ include "kopf.php";
 <?php
 
 //$result = query("SELECT * FROM rezepte ORDER BY titel ASC");
+//1 to 1 relationship
 $result = query("SELECT rezepte. *, benutzer.benutzername FROM rezepte LEFT JOIN benutzer ON rezepte.benutzer_id = benutzer.id ORDER BY rezepte.titel ASC");
 
 

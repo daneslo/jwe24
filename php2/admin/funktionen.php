@@ -1,5 +1,6 @@
 <?php
 
+
 //ist notwendig um auf die $_SESSION zur Verfügung zu haben.
 session_start();
 
