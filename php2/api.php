@@ -13,7 +13,7 @@ function fehler($message){
 }
 
 //GET- parameter aus request uri
-// /api/produkte/1
+
 $request_uri_ohne_get = explode("?", $_SERVER['REQUEST_URI'])[0];
 
 
