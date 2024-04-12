@@ -15,7 +15,7 @@ class Statisch {
     }
 
     public function __construct() {
-        self::$id+= 1;
+        self::$id += 1;
     }
 
     public function mache_etwas() {

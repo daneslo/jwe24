@@ -31,6 +31,6 @@ echo "Durchmesser zum Schluss: " . $k->durchmesser() . "<br>";
     echo "<br>";
 }
 
-unset($k);
+unset($k); //Objekt wird gelöscht
 
 echo "Letzte Ausgabe<br>";

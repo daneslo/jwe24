@@ -32,6 +32,7 @@ namespace WIFI\JWE\Tier;
 
     //public final function get_name()
     //wenn etwas "final" ist, kann keine kind-klasse diese Methode überschreiben.
+    //du kann die name wiederholen, aber nicht die Methode überschreiben.
     public function get_name (): string {
         return $this->name;
     }
