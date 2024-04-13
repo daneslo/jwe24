@@ -17,7 +17,7 @@ if (! empty($_POST)) {
     if (!$validieren->fehler_aufgetreten()) {
         //witere machen mit einloggen
         
-        $db = new Mysql();
+        $db = Mysql::getInstanz();
         $sql_benutzername = $db->escape($_POST ["benutzername"]);
         $ergebnis = $db->query("SELECT * FROM benutzer WHERE benutzername = '{$sql_benutzername}'");
         $benutzer = $ergebnis -> fetch_assoc();

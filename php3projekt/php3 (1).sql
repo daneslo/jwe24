@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 12. Apr 2024 um 20:12
+-- Erstellungszeit: 13. Apr 2024 um 15:21
 -- Server-Version: 10.4.32-MariaDB
 -- PHP-Version: 8.2.12
 
@@ -125,7 +125,7 @@ ALTER TABLE `benutzer`
 -- AUTO_INCREMENT für Tabelle `fahrzeuge`
 --
 ALTER TABLE `fahrzeuge`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT für Tabelle `marken`

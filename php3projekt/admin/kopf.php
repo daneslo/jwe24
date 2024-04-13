@@ -27,7 +27,8 @@
     }
     form {
     background-color: lightpink;
-    width: 50%;
+    width: 80%;
+    height: 300px;;
     padding: 20px;
     margin: 20px;
     border: 5px solid grey;
@@ -40,6 +41,17 @@
         width: 60%;
         text-align: left;
         color: yellow;
+    }
+    th {
+        background-color: darkblue;
+        color: yellow;
+    }
+    td {
+        background-color: white;
+        color: darkblue;
+    }
+    tr {
+        border: 1px solid white;
     }
     h1 {
         color: darkblue;
@@ -55,6 +67,11 @@
         border: 1px solid grey;
         border-radius: 5px;
     }
+    select {
+        padding: 10px;
+        border: 1px solid grey;
+        border-radius: 5px;
+    }
 
 </style>
 <body>
@@ -62,6 +79,9 @@
         <ul>
             <li><a href="index.php">
                 Start 
+            </a></li>
+            <li><a href="fahrzeuge_liste.php">
+                Fahrzeuge
             </a></li>
             
              <li> <a  href="logout.php">Ausloggen</a> (Eingeloggt als: <?php echo $_SESSION["benutzername"]?>)</li>
