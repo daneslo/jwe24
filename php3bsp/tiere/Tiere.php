@@ -43,5 +43,3 @@ class Tiere implements TiereInterface, \Iterator {
     }
 
 }
-
-
