@@ -1,177 +1,178 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PHP 3 Praxisprüfung</title>
+        <title>PHP 3 </title>
         <meta charset='utf-8' />
     </head>
     <body>
-        <h2>Container testen</h2>
+        <h2>Testing Containers</h2>
 
         <?php
 
         // Autoloader
         spl_autoload_register(
-          function (string $klasse) {
-              // Projekt-spezifisches namespace prefix
+          function (string $class) {
+              // Project-specific namespace prefix
               $prefix = "WIFI\\Php3\\";
 
-              // Basisverzeichnis für das Projekt
-              $basis = __DIR__ . "/";
 
-              // Wenn die Klasse das Prefix nicht verwendet, abbrechen
-              $laenge = strlen($prefix);
-              if (substr($klasse, 0, $laenge) !== $prefix) {
+              // Base directory for the project
+              $base = __DIR__ . "/";
+
+              // If the class does not use the prefix, abort
+              $length = strlen($prefix);
+              if (substr($class, 0, $length) !== $prefix) {
                   return;
               }
 
-              // Klasse ohne Prefix
-              $klasse_ohne_prefix = substr($klasse, $laenge);
+              // Class without prefix
+              $class_without_prefix = substr($class, $length);
 
-              // Dateipfad erstellen
-              $datei = $basis . $klasse_ohne_prefix . ".php";
-              $datei = str_replace("\\", "/", $datei);
+              // Create file path
+              $file = $base . $class_without_prefix . ".php";
+              $file = str_replace("\\", "/", $file);
 
-              // Wenn die Datei existiert, einbinden
-              if (file_exists($datei)) {
-                  include $datei;
+              // If the file exists, include it
+              if (file_exists($file)) {
+                  include $file;
               }
           }
         );
 
-        // Ausgabe
-        // Aufgabe 1
-        echo "<h2>Aufgabe 1</h2>";
+        // Output
+        // Task 1
+        echo "<h2>Task 1</h2>";
 
-        use WIFI\Php3\Test\Container\GrosserContainer;
-        use WIFI\Php3\Test\Container\KleinerContainer;
-        use WIFI\Php3\Test\Container\Frachtschiff;
+        use WIFI\Php3\Test\Container\LargeContainer;
+        use WIFI\Php3\Test\Container\SmallContainer;
+        use WIFI\Php3\Test\Container\CargoShip;
 
         try {
-          $container_1 = new KleinerContainer(200);
-          echo "Container wurde erstellt!";
+          $container_1 = new SmallContainer(200);
+          echo "Container was created!";
         } catch (Exception $ex) {
-            echo "Falsche Eingabe: " . $ex->getMessage();
+            echo "Wrong input: " . $ex->getMessage();
             echo "<br><br>";
         }
 
-        $container_1 = new KleinerContainer(20);
-        $container_2 = new KleinerContainer(10);
-        $container_3 = new GrosserContainer(10);
+        $container_1 = new SmallContainer(20);
+        $container_2 = new SmallContainer(10);
+        $container_3 = new LargeContainer(10);
 
-        echo "Ist-Gewicht von Container 1:<br>";
-        echo $container_1->berechne_istgewicht() . " Tonnen";
+        echo "Actual weight of Container 1:<br>";
+        echo $container_1->calculate_actual_weight() . " tons";
         echo "<br><br>";
-        echo "Maximales Gewicht von Container 1:<br>";
-        echo $container_1->berechne_maximales_gesamtgewicht() . " Tonnen";
+        echo "Maximum weight of Container 1:<br>";
+        echo $container_1->calculate_max_total_weight() . " tons";
         echo "<br>";
 
-        // Aufgabe 2
-        echo "<h2>Aufgabe 2</h2>";
+        // Task 2
+        echo "<h2>Task 2</h2>";
 
-        $frachtschiff_1 = new Frachtschiff(80);
-        echo "Die Reisezeit von Frachtschiff 1:<br>";
-        echo $frachtschiff_1->reisezeit(500) . " Stunden";
+        $cargo_ship_1 = new CargoShip(80);
+        echo "Travel time of Cargo Ship 1:<br>";
+        echo $cargo_ship_1->travel_time(500) . " hours";
         echo "<br><br>";
 
-        $frachtschiff_1->add($container_1);
-        $frachtschiff_1->add($container_2);
-        $frachtschiff_1->add($container_3);
+        $cargo_ship_1->add($container_1);
+        $cargo_ship_1->add($container_2);
+        $cargo_ship_1->add($container_3);
         
         // Iterator
-        echo "Das Ist-Gewicht der einzelnen Container im Frachtschiff 1 (Iterator):<br>";
-        foreach ($frachtschiff_1 as $container) {
-            echo $container->berechne_istgewicht() . " Tonnen";
+        echo "The actual weight of individual containers in Cargo Ship 1 (Iterator):<br>";
+        foreach ($cargo_ship_1 as $container) {
+            echo $container->calculate_actual_weight() . " tons";
             echo "<br>";
         }
 
         echo "<br>";
-        echo "Das geladene Gesamtgewicht von Frachtschiff 1: <br>";
-        echo $frachtschiff_1->anzahl_geladenes_gesamtgewicht() . " Tonnen";
+        echo "The loaded total weight of Cargo Ship 1: <br>";
+        echo $cargo_ship_1->loaded_total_weight() . " tons";
 
         echo "<br><br>";
-        echo "Die Anzahl der Container am Frachtschiff 1: <br>";
-        echo $frachtschiff_1->anzahl_geladener_container() . " Container";
+        echo "The number of containers on Cargo Ship 1: <br>";
+        echo $cargo_ship_1->loaded_container_count() . " containers";
 
-        // Aufgabe 3
-        echo "<h2>Aufgabe 3</h2>";
+        // Task 3
+        echo "<h2>Task 3</h2>";
 
-        $warengewicht = 12.55;
-        // Irgendeinen Container mit $warengewicht erstellen
-        // und Ist-Gewicht, sowie maximales Gesamtgewicht ausgeben
-        $container_z = new KleinerContainer($warengewicht);
+        $cargo_weight = 12.55;
+        // Create any container with $cargo_weight
+        // and output its actual weight, and maximum total weight
+        $container_z = new SmallContainer($cargo_weight);
 
-        echo "Das Ist-Gewicht von Container Z:<br>";
-        echo $container_z->berechne_istgewicht();
+        echo "The actual weight of Container Z:<br>";
+        echo $container_z->calculate_actual_weight();
         echo "<br><br>";
 
-        echo "Das Maximale Gesamtgewicht von Container Z:<br>";
-        echo $container_z->berechne_maximales_gesamtgewicht();
+        echo "The Maximum total weight of Container Z:<br>";
+        echo $container_z->calculate_max_total_weight();
 
         ?>
 
 
-        <h2>Frachtschiff testen</h2>
+        <h2>Testing Cargo Ship</h2>
         <?php
         if (!empty($_POST)) {
-            // - Frachtschiff erstellen
-            $frachtschiff_z = new Frachtschiff($_POST["geschwindigkeit"]);
-            // - Gegebene Anzahl an Container hinzufügen (for-Schleife)
-            for ($i = 1; $i <= $_POST["anzahl_container"]; $i++) {
-              // Container dem Schiff hinzufügen
-              $frachtschiff_z->add(new KleinerContainer($_POST["gewicht_container"]));
+            // - Create a Cargo Ship
+            $cargo_ship_z = new CargoShip($_POST["speed"]);
+            // - Add given number of containers (using for loop)
+            for ($i = 1; $i <= $_POST["container_count"]; $i++) {
+              // Add container to the ship
+              $cargo_ship_z->add(new SmallContainer($_POST["container_weight"]));
             }
-            // - Reisezeit, Anzahl Container, geladenes Gewicht ausgeben
-            echo "Reisezeit von Frachtschiff Z:<br>";
-            echo $frachtschiff_z->reisezeit($_POST["strecke"]) . " Stunden";
+            // - Output travel time, container count, loaded weight
+            echo "Travel time of Cargo Ship Z:<br>";
+            echo $cargo_ship_z->travel_time($_POST["distance"]) . " hours";
             echo "<br><br>";
-            echo "Anzahl an geladenen Containern am Frachtschiff Z:<br>";
-            echo $frachtschiff_z->anzahl_geladener_container() . " Container";
+            echo "Number of loaded containers on Cargo Ship Z:<br>";
+            echo $cargo_ship_z->loaded_container_count() . " containers";
             echo "<br><br>";
-            echo "Geladenes Gesamtgewicht am Frachtschiff Z:<br>";
-            echo $frachtschiff_z->anzahl_geladenes_gesamtgewicht() . " Tonnen";
+            echo "Loaded total weight on Cargo Ship Z:<br>";
+            echo $cargo_ship_z->loaded_total_weight() . " tons";
             echo "<br><br>";
         }
 
         ?>
         <form action='index.php' method='post'>
             <div>
-                <label for='geschwindigkeit'>Geschwindigkeit in km/h:</label>
-                <input type='number' name='geschwindigkeit' id='geschwindigkeit' min='0.0' max='100.0' step='0.1' value='<?php
-                  if (!empty($_POST["geschwindigkeit"])) {
-                    echo $_POST["geschwindigkeit"];
+                <label for='speed'>Speed in km/h:</label>
+                <input type='number' name='speed' id='speed' min='0.0' max='100.0' step='0.1' value='<?php
+                  if (!empty($_POST["speed"])) {
+                    echo $_POST["speed"];
                   } else {
                     echo 23;
                   } ?>' />
             </div>
             <div>
-                <label for='strecke'>Strecke in km:</label>
-                <input type='number' name='strecke' id='strecke' min='0' max='40000' step='1' value='<?php
-                  if (!empty($_POST["strecke"])) {
-                    echo $_POST["strecke"];
+                <label for='distance'>Distance in km:</label>
+                <input type='number' name='distance' id='distance' min='0' max='40000' step='1' value='<?php
+                  if (!empty($_POST["distance"])) {
+                    echo $_POST["distance"];
                   } else {
                     echo 4669;
                   } ?>' />
             </div>
             <div>
-                <label for='anzahl_container'>Anzahl Container:</label>
-                <input type='number' name='anzahl_container' id='anzahl_container' min='0' max='10000' step='1' value='<?php
-                  if (!empty($_POST["anzahl_container"])) {
-                    echo $_POST["anzahl_container"];
+                <label for='container_count'>Number of Containers:</label>
+                <input type='number' name='container_count' id='container_count' min='0' max='10000' step='1' value='<?php
+                  if (!empty($_POST["container_count"])) {
+                    echo $_POST["container_count"];
                   } else {
                     echo 8400;
                   } ?>' />
             </div>
             <div>
-                <label for='gewicht_container'>Warengewicht je Container:</label>
-                <input type='number' name='gewicht_container' id='gewicht_container' min='0.0' max='100.0' step='0.01' value='<?php
-                  if (!empty($_POST["gewicht_container"])) {
-                    echo $_POST["gewicht_container"];
+                <label for='container_weight'>Cargo Weight per Container:</label>
+                <input type='number' name='container_weight' id='container_weight' min='0.0' max='100.0' step='0.01' value='<?php
+                  if (!empty($_POST["container_weight"])) {
+                    echo $_POST["container_weight"];
                   } else {
                     echo 8.64;
                   } ?>' />
             </div>
             <div>
-                <button type='submit'>Berechnen</button>
+                <button type='submit'>Calculate</button>
             </div>
         </form>
     </body>
