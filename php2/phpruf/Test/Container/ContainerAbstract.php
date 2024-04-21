@@ -7,7 +7,7 @@ abstract class ContainerAbstract {
     private float $cargo_weight;
     private array $errors = array();
 
-    public function __construct(float $weight) {
+    public function __construct(float $weight) { 
         if ($weight > $this->payload_capacity) {
             throw new \Exception("The entered weight of " . $weight . 
             " tons exceeds the allowable payload of " . $this->payload_capacity . " tons.");
